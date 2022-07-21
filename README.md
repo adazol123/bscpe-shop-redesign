@@ -8,21 +8,21 @@ This is a redesign from our previous school project during college. Selected thi
 
 ### Tools/Packages used on re-designing:
 
-> 🍃 React Boilerplate (Front-end) > ***Typescript***
+> 🍃 React Boilerplate (Front-end) > **_Typescript_**
 
 > 🍃 Tailwaindcss (CSS styling)
 
-> 🍃 ~~React-Router-Dom (Browser Routing)~~
+> 🍃 React-Router-Dom (Browser Routing)
 
-> 🍃 ~~Date-fns (Date formater)~~
+> 🍃 Date-fns (Date formater)
 
-> 🍃 ~~Framer-Motion (Animation)~~
+> 🍃 Firebase (Back-end)
 
-> 🍃 ~~Firebase (Back-end)~~
+> 🍃 heroicons (Tailwindcss SVG Icons)
 
 > 🍃 ~~suspend-react (React Suspense)~~
 
-> 🍃 heroicons (Tailwindcss SVG Icons)
+> 🍃 ~~Framer-Motion (Animation)~~
 
 > 🍃 ~~react-easy-crop (Image cropper)~~
 
@@ -47,10 +47,20 @@ This is a redesign from our previous school project during college. Selected thi
 </details>
 
 <hr>
-<details open>
- <summary >July 17, 2022 (Current patch)</summary>
+<details >
+ <summary >July 17, 2022 (Previous patch)</summary>
     <br>
     • Refactor some codes to an reusable components.
+     <br>
+    • Converting Javascript with Typescript for script types
+
+ <br>
+</details>
+<hr>
+<details open>
+ <summary >July 21, 2022 (Current patch)</summary>
+    <br>
+    • Merged the Typescript version to master branch
      <br>
     • Merged with Typescript
 
@@ -60,14 +70,14 @@ This is a redesign from our previous school project during college. Selected thi
 <details >
  <summary >In progress</summary>
  <br>
- In progress
+ • Framer motion Animation
+ • Interaction Observer
 </details>
 <hr>
 
 <br>
 <br>
 <br>
-
 
 ### Author
 
