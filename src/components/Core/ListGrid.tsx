@@ -64,7 +64,7 @@ function WithProps({
             setCart(doc.data().cart);
           }
         });
-        console.log("[firestore] > fetched new list");
+        // console.log("[firestore] > fetched new list");
       });
 
     return () => {

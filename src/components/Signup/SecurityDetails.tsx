@@ -111,7 +111,7 @@ function SecurityDetails({
           setIsLoading(true);
         })
         .catch((error) => console.log("registration error >", error));
-    }, 3000);
+    }, 5000);
   };
 
   let Previous = (e: any) => {

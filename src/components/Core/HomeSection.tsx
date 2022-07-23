@@ -27,7 +27,7 @@ function Tabs() {
   //TODOS: Need to fix types of the Toggle State (temporarily set to 'any')
   // let { toggleHeadNotify }: any = ToggleState();
   const [ref, { top, y }] = useMeasure({ polyfill: IntersectionObserver });
-  console.log(top);
+  // console.log(top);
   return (
     <div
       ref={ref}

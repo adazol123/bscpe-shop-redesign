@@ -1,7 +1,7 @@
 import CardLarge from "../UI/Cards/CardLarge";
 
 const Trending = () => {
-  console.log("trending rending...");
+  // console.log("trending rending...");
   return (
     <>
       <aside className="m-4 overflow-hidden lg:overflow-visible lg:order-1 lg:col-end-1 lg:row-start-5">

@@ -32,7 +32,6 @@ import ButtonCustom from "../Buttons/Custom/ButtonCustom";
 import NavLink from "../../../utils/others/NavLink";
 export const SidebarNav = ({ state, toggleStateHandler }: Modal) => {
   let { currentUser, logout }: any = UserAuth();
-  console.log(currentUser);
   let navigate = useNavigate();
   let { toggleStateHandler: rootStateHandler } = ToggleState() as StaticState;
   return (

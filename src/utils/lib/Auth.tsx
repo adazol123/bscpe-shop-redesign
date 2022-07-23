@@ -123,6 +123,7 @@ export const AuthProvider = ({ children }: JSX) => {
   let [list, setList] = useState([]);
 
   useEffect(() => {
+    console.log("> auth provider redering");
     let q = query(productRef, limit(24));
     let unsub = onSnapshot(q, (snapshot) => {
       let qList: [] = [];
@@ -144,8 +145,6 @@ export const AuthProvider = ({ children }: JSX) => {
       unsub();
     };
   }, []);
-
-  console.log("> auth provider re-rendered");
 
   return (
     <AuthContext.Provider
