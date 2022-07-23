@@ -52,7 +52,7 @@ const NavHeader = () => {
       )}
 
       <nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-1">
           <button
             className="btn_icon"
             onClick={() => toggleStateHandler!("hamburger_mobile")}
@@ -64,7 +64,7 @@ const NavHeader = () => {
           {/* <FireIcon /> */}
           <span
             className="text-xs"
-            onClick={() => navigate("/", { replace: true })}
+            onClick={() => navigate("/0", { replace: true })}
           >
             BSCPE Store
           </span>

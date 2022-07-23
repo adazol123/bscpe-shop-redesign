@@ -9,8 +9,8 @@ const Profile = () => {
   let { toggleStateHandler } = ToggleState() as StaticState;
   let navigate = useNavigate();
   return (
-    <div className="flex flex-col w-full max-w-screen-sm gap-4 px-4 py-4 mx-auto text-gray-600 lg:max-w-screen-lg bg-slate-100">
-      <div className="flex justify-between w-full">
+    <div className="flex flex-col w-full max-w-screen-sm gap-4 px-4 py-4 mx-auto text-gray-600 lg:max-w-screen-lg bg-inherit">
+      <nav className="flex justify-between w-[calc(100%+2px)] md:w-full sticky md:static top-0 bg-inherit py-1 -mx-[1px] ">
         <ScrollToTop />
         <User />
         <button>
@@ -22,7 +22,7 @@ const Profile = () => {
             }}
           />
         </button>
-      </div>
+      </nav>
       <div className="flex flex-col gap-4 lg:flex-row">
         <div className="flex flex-col lg:min-w-[30em] lg:max-w-screen-md gap-4 lg:mt-6">
           <div className="flex items-start justify-between w-full h-32 px-4 py-8 rounded-lg shadow-lg bg-gradient-to-bl from-gray-800/80 to-gray-900">

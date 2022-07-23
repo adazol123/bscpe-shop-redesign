@@ -116,7 +116,7 @@ function FooterSummary({
         <table className="w-full border-separate table-fixed border-spacing-2">
           <tbody className="w-full">
             <tr className="text-sm text-gray-500">
-              <td>Quantity</td>
+              <td>Item[s] in cart</td>
               <td className="text-end">{totalQuantity?.toFixed(0)}</td>
             </tr>
             <tr className="text-sm text-gray-500">
@@ -124,7 +124,7 @@ function FooterSummary({
               <td className="text-end">40%</td>
             </tr>
             <tr className="text-lg font-medium ">
-              <td>Total ammount</td>
+              <td>Sub-total</td>
               <td className="text-end">₱ {total?.toFixed(2)}</td>
             </tr>
           </tbody>

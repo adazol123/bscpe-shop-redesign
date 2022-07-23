@@ -11,6 +11,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import HomeSection from "./components/Core/HomeSection";
 import HomePage from "./pages/Homepage";
 
+import { AnimatePresence } from "framer-motion";
+
 function App() {
   //Internal state management (test only)
 
@@ -47,25 +49,29 @@ function App() {
   // let element = useRoutes(routes)
 
   return (
-    <div className="">
-      <NavHeader />
-      {pathname === "/" && (
-        <div
-          className={`relative h-screen -top-[var(--height-top)] bg-gradient-to-t from-black to-black/30`}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1657928196334-26146c4e5702?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            alt="girl-texting-on-hod"
-            className="object-cover w-full h-full mix-blend-color"
-          />
-          <AnimatedHomeContent setToggleStateHandler={setToggleStateHandler} />
-        </div>
-      )}
+    <AnimatePresence>
+      <div className="">
+        <NavHeader />
+        {pathname === "/" && (
+          <div
+            className={`relative h-screen -top-[var(--height-top)] bg-gradient-to-t from-black to-black/30`}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1657928196334-26146c4e5702?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+              alt="girl-texting-on-hod"
+              className="object-cover w-full h-full mix-blend-multiply"
+            />
+            <AnimatedHomeContent
+              setToggleStateHandler={setToggleStateHandler}
+            />
+          </div>
+        )}
 
-      <HomePage />
+        <HomePage />
 
-      <Home />
-    </div>
+        <Home />
+      </div>
+    </AnimatePresence>
   );
 }
 
@@ -96,7 +102,7 @@ function HomeContent({ setToggleStateHandler }: Modal) {
   return (
     <animated.div
       style={props}
-      className="absolute bottom-0 m-5 text-sm text-gray-500 h-fit"
+      className="absolute bottom-0 m-5 mb-20 text-sm text-gray-500 h-fit"
     >
       <div ref={ref} className="flex flex-col gap-6">
         <div>

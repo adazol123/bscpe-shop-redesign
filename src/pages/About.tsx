@@ -1,9 +1,10 @@
 import CardLarge from "../components/UI/Cards/CardLarge";
 import ProductCardGrid from "../components/UI/Cards/ProductCardGrid";
+import AnimatedContainer from "./../components/Animations/AnimatedContainer/AnimatedContainer";
 
 const About = () => {
   return (
-    <>
+    <AnimatedContainer>
       <div className="grid w-full px-4 text-sm text-gray-400 place-content-center">
         <h1 className="text-3xl text-gray-500 font-extralight max-w-[12ch] mx-auto py-4 text-center">
           BSCPE STORE V2{" "}
@@ -40,7 +41,7 @@ const About = () => {
           {/* <CardLarge /> */}
         </div>
       </div>
-    </>
+    </AnimatedContainer>
   );
 };
 

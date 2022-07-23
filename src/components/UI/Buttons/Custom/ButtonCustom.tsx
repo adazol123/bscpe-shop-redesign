@@ -7,9 +7,14 @@ interface ButtonCustom {
   icon?: JSX.Element;
   className?: string;
 }
-const ButtonCustom = <T extends ButtonCustom>({ children, icon, className }: T) => {
+const ButtonCustom = <T extends ButtonCustom>({
+  children,
+  icon,
+  className,
+  ...props
+}: T) => {
   return (
-    <button className={`${style.button__custom} ${className}`}>
+    <button className={`${style.button__custom} ${className}`} {...props}>
       {icon && <span>{icon}</span>}
       <span>{children}</span>
     </button>

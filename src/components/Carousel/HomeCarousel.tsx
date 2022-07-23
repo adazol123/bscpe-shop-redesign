@@ -11,29 +11,27 @@ function HomeCarousel() {
 
   useEffect(() => {
     let timer = setInterval(() => {
-
-      handleNext()
+      handleNext();
     }, 8000);
 
-    return () => clearInterval(timer)
-
-  }, [count])
+    return () => clearInterval(timer);
+  }, [count]);
 
   let handleNext = () => {
-    if (count < images?.length - 1) setCount(count + 1)
+    if (count < images?.length - 1) setCount(count + 1);
     else {
-      setCount(0)
+      setCount(0);
     }
-  }
+  };
   let handlePrev = () => {
-    if (count > 0) setCount(count - 1)
+    if (count > 0) setCount(count - 1);
     else {
-      setCount(images.length - 1)
+      setCount(images.length - 1);
     }
-  }
+  };
 
   return (
-    <div className="relative h-40 mx-2 overflow-hidden rounded-md md:h-60 lg:h-80 lg:col-span-3 lg:row-span-3">
+    <div className="relative h-40 mx-4 overflow-hidden rounded-md md:h-60 lg:h-80 lg:col-span-3 lg:row-span-3">
       <div className="absolute top-0 left-0 z-10 flex items-center justify-between w-full h-full text-white">
         <button
           className="mx-2 rounded-full h-fit bg-gray-500/5 backdrop-blur-sm"
@@ -47,7 +45,11 @@ function HomeCarousel() {
         >
           <ChevronRightIcon className="w-[1.5em] lg:w-[3em] h-6 " />
         </button>
-        <Dot length={images?.length} activeIndex={count} setActiveIndex={setCount} />
+        <Dot
+          length={images?.length}
+          activeIndex={count}
+          setActiveIndex={setCount}
+        />
       </div>
 
       <div className="relative top-0 left-0 flex items-center justify-between w-full h-full -z-0">
@@ -60,8 +62,9 @@ function HomeCarousel() {
             exit="exit"
             custom={direction}
             transition={{ duration: 0.6 }}
-            className={`absolute top-0 left-0 flex  w-full h-full justify-center items-center  ${colors[Math.abs(count) % colors.length]
-              }`}
+            className={`absolute top-0 left-0 flex  w-full h-full justify-center items-center  ${
+              colors[Math.abs(count) % colors.length]
+            }`}
           >
             <img
               className="object-cover w-full h-full mix-blend-multiply"
@@ -76,9 +79,9 @@ function HomeCarousel() {
 }
 
 let variants = {
-  enter: (direction : string) => ({ x: direction === "+" ? "100%" : "-100%" }),
+  enter: (direction: string) => ({ x: direction === "+" ? "100%" : "-100%" }),
   center: { x: 0 },
-  exit: (direction : string) => ({ x: direction === "+" ? "-100%" : "100%" }),
+  exit: (direction: string) => ({ x: direction === "+" ? "-100%" : "100%" }),
 };
 
 let images = [
@@ -98,7 +101,7 @@ let colors = [
   "bg-purple-300",
 ];
 
-function usePrevious(state : number) {
+function usePrevious(state: number) {
   let [tuple, setTuple] = useState([0, state]);
 
   if (tuple[1] !== state) {

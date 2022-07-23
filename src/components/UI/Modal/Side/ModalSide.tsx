@@ -1,6 +1,10 @@
 import React from "react";
 import style from "../Modal.module.css";
-import { XIcon, ArrowNarrowRightIcon } from "@heroicons/react/outline";
+import {
+  XIcon,
+  ArrowNarrowRightIcon,
+  ArrowLeftIcon,
+} from "@heroicons/react/outline";
 
 interface Modal {
   title?: string | null;
@@ -40,17 +44,16 @@ export default function ModalSide({
         ].join(" ")}
       >
         <nav>
-          <div className="inline-flex gap-4">
-            {icon && <span>{icon}</span>}
+          <div className="inline-flex gap-2 items-center">
+            <button
+              className="btn_icon"
+              tabIndex={state ? 1 : -1}
+              onClick={toggleStateHandler}
+            >
+              <ArrowLeftIcon />
+            </button>
             <span> {title ? title : "Title here"}</span>
           </div>
-          <button
-            className="btn_icon"
-            tabIndex={state ? 1 : -1}
-            onClick={toggleStateHandler}
-          >
-            <XIcon />
-          </button>
         </nav>
         <div
           className={[

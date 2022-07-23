@@ -117,25 +117,22 @@ export const SidebarNav = ({ state, toggleStateHandler }: Modal) => {
             <SideNavButton Icon={ShoppingBagIcon} name={"Shopping cart"} />
           </button> */}
 
-          <NavLink to="" onClick={toggleStateHandler}>
+          <NavLink to="/0" onClick={toggleStateHandler}>
             <ButtonCustom icon={<HomeIcon />} className="w-full text-sm">
               Home
             </ButtonCustom>
           </NavLink>
-          <NavLink
-            to=""
+
+          <ButtonCustom
+            icon={<ShoppingBagIconLine />}
+            className="w-full text-sm"
             onClick={() => {
               toggleStateHandler();
               rootStateHandler("cart");
             }}
           >
-            <ButtonCustom
-              icon={<ShoppingBagIconLine />}
-              className="w-full text-sm"
-            >
-              Shopping cart
-            </ButtonCustom>
-          </NavLink>
+            Shopping cart
+          </ButtonCustom>
           <Dropdown title="Categories">
             <NavLink to={"/0"} onClick={toggleStateHandler}>
               <span>

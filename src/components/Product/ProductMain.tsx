@@ -8,6 +8,7 @@ import { UserAuth } from "../../utils/lib/Auth";
 import ShopState from "../../utils/lib/ShopState";
 import { ToggleState } from "../../utils/lib/ToggleState";
 import RadioButtonGroup from "../UI/Buttons/RadioButtonGroup/RadioButtonGroup";
+import AnimatedContainer from "./../Animations/AnimatedContainer/AnimatedContainer";
 
 let colors = [
   {
@@ -117,124 +118,125 @@ const ProductMain = () => {
   };
 
   return (
-    <>
-      <ScrollToTop />
-      {product && (
-        <div className="sticky top-0 ">
-          {/* <div className='px-4 py-4 bg-white'>
+    <AnimatedContainer>
+      <>
+        <ScrollToTop />
+        {product && (
+          <div className="sticky top-0 ">
+            {/* <div className='px-4 py-4 bg-white'>
                 <ArrowLeftIcon className="w-5 h-5" />
             </div> */}
-          <div className="h-[86vh] overflow-y-scroll flex flex-col w-full md:flex-row">
-            <div className="w-full overflow-hidden images-carousel h-72 md:p-4">
-              <div className="flex overflow-x-scroll">
-                <img
-                  src={product?.product_image}
-                  alt={product?.product_name}
-                  className="object-cover w-screen h-72"
-                />
-              </div>
-              <div>hello</div>
-            </div>
-            <div className="flex flex-col gap-2 m-4">
-              <p className="text-xs font-thin text-gray-400">
-                SKU: {product?.product_id.toUpperCase()}
-              </p>
-              <h1 className="text-2xl font-bold leading-6">
-                {product?.product_name}
-              </h1>
-              <div className="grid grid-cols-3 gap-1 py-4 text-sm">
-                <div>
-                  <h3 className="font-medium ">Category:</h3>
-                  <p className="font-thin text-gray-500">
-                    {product?.product_category.toUpperCase()}
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium ">Stocks:</h3>
-                  <p className="font-thin text-gray-500">
-                    {product?.product_quantity}
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium ">Color:</h3>
-                  <div className="flex gap-4 p-2 font-thin text-gray-500">
-                    <RadioButtonGroup
-                      type="Color"
-                      values={colors}
-                      selectedOption={selectedColorOption}
-                      setSelectedOption={setSelectedColorOption}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-medium ">Price:</h3>
-                  <p className="py-1 text-lg font-medium text-amber-600">
-                    P {product?.product_price.toString()}
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium ">Size:</h3>
-                  <div className="flex gap-3 p-2 text-xs font-thin text-gray-500">
-                    <RadioButtonGroup
-                      type="Size"
-                      values={size}
-                      selectedOption={selectedSizeOption}
-                      setSelectedOption={setSelectedSizeOption}
-                    />
-                  </div>
+            <div className="h-full overflow-y-scroll flex flex-col w-full md:flex-row">
+              <div className="w-full overflow-hidden images-carousel h-[18em] md:p-4">
+                <div className="flex overflow-x-scroll h-96">
+                  <img
+                    src={product?.product_image}
+                    alt={product?.product_name}
+                    className="object-cover w-screen h-full"
+                  />
                 </div>
               </div>
-
-              <hr />
-              <div className="text-sm">
-                <h3 className="font-medium">Description</h3>
-                <p className="mt-2 text-gray-500">
-                  {product?.product_description}
+              <div className="flex flex-col gap-2 m-4">
+                <p className="text-xs font-thin text-gray-400">
+                  SKU: {product?.product_id.toUpperCase()}
                 </p>
-              </div>
-              <div className="flex gap-4">
-                <div className="inline-flex items-center">
-                  <button
-                    disabled={isInCart}
-                    className="px-2 py-3 text-white bg-gray-400 rounded-l-md"
-                    onClick={() => minusQuantity()}
-                  >
-                    <MinusIcon className="w-6 h-6" />
-                  </button>
-                  <div className="relative grid w-10 h-12 p-4 border border-gray-400 place-content-center">
-                    <span className="">{quantity}</span>
+                <h1 className="text-2xl font-bold leading-6">
+                  {product?.product_name}
+                </h1>
+                <div className="grid grid-cols-3 gap-1 py-4 text-sm">
+                  <div>
+                    <h3 className="font-medium ">Category:</h3>
+                    <p className="font-thin text-gray-500">
+                      {product?.product_category.toUpperCase()}
+                    </p>
                   </div>
-                  {/* <input type="number" name="quantity" maxLength={2} max={2} pattern="[0-9]{2}" value={quantity} onChange={handleChange} className='w-[6ch] border rounded-sm text-center py-2 px-0' /> */}
-
-                  <button
-                    disabled={isInCart}
-                    className="px-2 py-3 text-white bg-gray-400 rounded-r-md"
-                    onClick={() => addQuantity()}
-                  >
-                    <PlusIcon className="w-6 h-6" />
-                  </button>
+                  <div>
+                    <h3 className="font-medium ">Stocks:</h3>
+                    <p className="font-thin text-gray-500">
+                      {product?.product_quantity}
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-medium ">Color:</h3>
+                    <div className="flex gap-4 p-2 font-thin text-gray-500">
+                      <RadioButtonGroup
+                        type="Color"
+                        values={colors}
+                        selectedOption={selectedColorOption}
+                        setSelectedOption={setSelectedColorOption}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-medium ">Price:</h3>
+                    <p className="py-1 text-lg font-medium text-amber-600">
+                      P {product?.product_price.toString()}
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-medium ">Size:</h3>
+                    <div className="flex gap-3 p-2 text-xs font-thin text-gray-500">
+                      <RadioButtonGroup
+                        type="Size"
+                        values={size}
+                        selectedOption={selectedSizeOption}
+                        setSelectedOption={setSelectedSizeOption}
+                      />
+                    </div>
+                  </div>
                 </div>
 
+                <hr />
+                <div className="text-sm">
+                  <h3 className="font-medium">Description</h3>
+                  <p className="mt-2 text-gray-500">
+                    {product?.product_description}
+                  </p>
+                </div>
+                <div className="flex gap-4">
+                  <div className="inline-flex items-center">
+                    <button
+                      disabled={isInCart}
+                      className="px-2 py-3 text-white bg-gray-400 rounded-l-md"
+                      onClick={() => minusQuantity()}
+                    >
+                      <MinusIcon className="w-6 h-6" />
+                    </button>
+                    <div className="relative grid w-10 h-12 p-4 border border-gray-400 place-content-center">
+                      <span className="">{quantity}</span>
+                    </div>
+                    {/* <input type="number" name="quantity" maxLength={2} max={2} pattern="[0-9]{2}" value={quantity} onChange={handleChange} className='w-[6ch] border rounded-sm text-center py-2 px-0' /> */}
+
+                    <button
+                      disabled={isInCart}
+                      className="px-2 py-3 text-white bg-gray-400 rounded-r-md"
+                      onClick={() => addQuantity()}
+                    >
+                      <PlusIcon className="w-6 h-6" />
+                    </button>
+                  </div>
+
+                  <button
+                    className="w-full btn-primary"
+                    onClick={() => {
+                      handleClick();
+                    }}
+                  >
+                    {isInCart ? "Remove to cart" : "Add to cart"}
+                  </button>
+                </div>
                 <button
-                  className="w-full btn-primary"
-                  onClick={() => {
-                    handleClick();
-                  }}
+                  className="w-full btn-secondary"
+                  onClick={() => navigate("/0")}
                 >
-                  {isInCart ? "Remove to cart" : "Add to cart"}
+                  Continue shopping
                 </button>
               </div>
-              <button
-                className="w-full btn-secondary"
-                onClick={() => navigate("/0")}
-              >
-                Continue shopping
-              </button>
             </div>
           </div>
-        </div>
-      )}
-    </>
+        )}
+      </>
+    </AnimatedContainer>
   );
 };
 

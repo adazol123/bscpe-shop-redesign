@@ -15,7 +15,7 @@
 }
 
 .product__tag {
-  @apply absolute px-2 py-1 text-[0.9em] text-white rounded bg-black/30 top-2 left-2;
+  @apply absolute px-2 py-1 text-[0.7em] text-white rounded bg-black/5 backdrop-blur top-2 left-2;
 }
 
 .product__bottom {
@@ -26,18 +26,18 @@
   @apply w-full space-y-1;
 }
 .product__title {
-  @apply max-w-[14ch] hover:underline underline-offset-2 font-medium line-clamp-3;
+  @apply max-w-[14ch] text-[0.9em] hover:underline underline-offset-2 font-medium line-clamp-3;
 }
 
 .product__price {
-  @apply inline-flex gap-1 font-bold text-amber-700 whitespace-nowrap;
+  @apply inline-flex gap-1 font-bold text-emerald-600 whitespace-nowrap;
 }
 
 .product__original_price {
   @apply font-normal text-[0.8em] line-through text-black/70 whitespace-nowrap;
 }
 .product__cart {
-  @apply p-2 rounded-full hover:bg-black/10 hover:shadow-sm;
+  @apply p-2 rounded-full bg-black/10 hover:bg-black/70 hover:text-white hover:shadow-sm;
 }
 
 .product__cart svg {

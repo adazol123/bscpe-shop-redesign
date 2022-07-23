@@ -9,7 +9,7 @@
 
 body {
   margin: 0;
-  @apply font-sans;
+  @apply font-sans bg-white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

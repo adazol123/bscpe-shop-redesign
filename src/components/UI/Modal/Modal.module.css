@@ -12,10 +12,10 @@
 
 /* modal header section*/
 .modal_side nav {
-  @apply inline-flex items-center justify-between py-4 text-gray-400 h-nav-height;
+  @apply inline-flex -mx-2 items-center justify-between py-4 text-neutral-600 h-nav-height;
 }
 .modal_side nav button {
-  @apply text-gray-400;
+  @apply text-neutral-400;
 }
 
 .scrollable {

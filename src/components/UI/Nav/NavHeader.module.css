@@ -4,7 +4,7 @@
   @apply sticky inset-x-0 top-0 z-20 w-full;
 }
 .nav_header nav {
-  @apply flex items-center justify-between px-4 text-black bg-gradient-to-br from-white to-white h-nav-height mix-blend-difference;
+  @apply flex items-center justify-between px-1 text-black bg-gradient-to-br from-white to-white h-nav-height mix-blend-difference;
 }
 
 .nav_header_list {

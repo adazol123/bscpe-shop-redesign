@@ -15,6 +15,7 @@ import ProductMain from "../components/Product/ProductMain";
 import SubSettings from "../components/UserProfile/SubSettings";
 import Settings from "../components/UserProfile/Settings";
 import Profile from "../components/UserProfile/Profile";
+import Account from "./../pages/Account";
 
 function RouterMain() {
   return (
@@ -37,7 +38,7 @@ export const routes: any = [
     children: [
       {
         path: "",
-        element: <Profile />,
+        element: <Account />,
         children: [
           {
             path: "",

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import Input from "../UI/Forms/Input";
 import { UserAuth } from "../../utils/lib/Auth";
 import Button from "../UI/Buttons/Standard/Button";
-import Input from "./../UI/TextInput/Input";
+import Input from "./../UI/Form/TextInput/Input";
 
 const Login = () => {
   const [error, setError] = useState("");
