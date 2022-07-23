@@ -25,11 +25,11 @@
 }
 
 .side_bar_header h2 {
-  @apply text-lg font-medium text-white;
+  @apply text-base font-medium text-white;
 }
 
 .side_bar_header p {
-  @apply text-sm font-thin text-white/60;
+  @apply text-xs font-thin text-white/60;
 }
 
 .bottom {
@@ -39,24 +39,14 @@
 
 /** NAVIGATION SECTION */
 .side_bar nav {
-  @apply flex flex-col h-auto gap-1 px-4 py-2 mt-2 overflow-y-scroll;
-}
-.side_bar nav button {
-  @apply inline-flex items-center justify-between px-4 py-4 text-black rounded;
-}
-.active {
-  @apply text-white bg-black !important;
-}
-
-.side_bar nav button div {
-  @apply inline-flex items-center gap-4;
+  @apply flex flex-col gap-1 m-4;
 }
 
 /** END OF NAVIGATION SECTION */
 
 /** FOOTER  SECTION */
 .footer {
-  @apply absolute bottom-0 flex flex-col w-full p-4 bg-white;
+  @apply absolute bottom-0 flex flex-col gap-2 w-full p-6 bg-white;
 }
 
 .login {

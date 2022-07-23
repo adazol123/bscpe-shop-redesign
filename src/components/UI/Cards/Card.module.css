@@ -47,15 +47,15 @@
 /** END OF PRODUCT CARD GRID */
 
 .large {
-  @apply relative w-64 h-64 overflow-hidden rounded grayscale-[70%] transform-gpu transition-all duration-500;
+  @apply relative w-64 h-64 overflow-hidden rounded grayscale-[20%] transform-gpu transition-all duration-500 select-none;
 }
 
 .large__image {
-  @apply absolute inset-0;
+  @apply absolute inset-0 select-none;
 }
 
 .large__image img {
-  @apply object-cover w-full h-full transition-all duration-500 origin-bottom transform-gpu;
+  @apply object-cover w-full h-full transition-all duration-500 origin-bottom transform-gpu select-none;
 }
 
 .large__details {

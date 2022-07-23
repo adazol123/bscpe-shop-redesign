@@ -163,10 +163,11 @@ export const routes: any = [
         path: "",
         element: <StepForm />,
       },
-      { path: "success", element: <Completed /> },
+
       { path: "2", element: <StepForm /> },
     ],
   },
+  { path: "success", element: <Completed /> },
   {
     path: "about",
     element: <About />,

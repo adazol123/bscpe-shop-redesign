@@ -15,13 +15,13 @@ function PasswordRequirementInfo({
 }) {
   return (
     <>
-      <div className="px-4 py-2 text-[0.62em] border border-gray-300 border-dashed rounded-md text-gray-400 w-full mt-4">
+      <div className="px-4 py-2 text-[0.62em] border border-gray-300 border-dashed rounded-md text-gray-400 w-full mb-4">
         <h3>Password requirement</h3>
-        <div className="text-[0.9em] text-black/60 px-2 font-light mt-1">
-          <div className="flex items-center gap-2">
+        <div className="text-[0.9em] text-black/60 px-2 font-light">
+          <div className="flex items-center gap-2 leading-3">
             <BadgeCheckIcon
               className={[
-                "w-3",
+                "w-3 h-3",
                 passLowerCase ? "text-gray-300" : "text-emerald-600",
               ].join(" ")}
             />
@@ -30,7 +30,7 @@ function PasswordRequirementInfo({
           <div className="flex items-center gap-2 leading-3">
             <BadgeCheckIcon
               className={[
-                "w-3",
+                "w-3 h-3",
                 passUpperCase ? "text-gray-300" : "text-emerald-600",
               ].join(" ")}
             />
@@ -39,7 +39,7 @@ function PasswordRequirementInfo({
           <div className="flex items-center gap-2 leading-3">
             <BadgeCheckIcon
               className={[
-                "w-3",
+                "w-3 h-3",
                 passNumber ? "text-gray-300" : "text-emerald-600",
               ].join(" ")}
             />
@@ -48,7 +48,7 @@ function PasswordRequirementInfo({
           <div className="flex items-center gap-2 leading-3">
             <BadgeCheckIcon
               className={[
-                "w-3",
+                "w-3 h-3",
                 passLength ? "text-gray-300" : "text-emerald-600",
               ].join(" ")}
             />
@@ -57,7 +57,7 @@ function PasswordRequirementInfo({
           <div className="flex items-center gap-2 leading-3">
             <BadgeCheckIcon
               className={[
-                "w-3",
+                "w-3 h-3",
                 passNotMatch ? "text-gray-300" : "text-emerald-600",
               ].join(" ")}
             />

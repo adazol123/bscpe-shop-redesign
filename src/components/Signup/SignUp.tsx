@@ -1,4 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
+import Button from "../UI/Buttons/Standard/Button";
 
 const SignUp = () => {
   return (
@@ -16,7 +17,7 @@ const SignUp = () => {
       <div className="flex col-span-2 lg:col-span-1">
         <div className="flex flex-col justify-between items-center min-h-[calc(100vh-8em)] w-[calc(100vw-2em)] md:w-[calc(90%-2em)] lg:max-w-md mx-auto">
           <div className="flex flex-col w-full p-4 mx-auto rounded-lg">
-            <h1 className="mb-8 text-2xl font-thin text-center text-gray-400">
+            <h1 className="mb-8 text-sm font-thin text-center text-gray-400">
               Create a new account
             </h1>
 
@@ -25,9 +26,11 @@ const SignUp = () => {
 
           <p className="py-4 text-xs text-center text-gray-400/70">
             Already a member?{" "}
-            <Link className="text-gray-500 btn-link" to={"/login"}>
-              Login
-            </Link>
+            <Button type="link" className={"px-0 text-xs font-bold"}>
+              <Link className="text-gray-500 btn-link" to={"/login"}>
+                Login
+              </Link>
+            </Button>
           </p>
         </div>
       </div>

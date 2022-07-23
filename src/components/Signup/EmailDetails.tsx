@@ -4,8 +4,10 @@ import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../auth/firebase";
 import Form from "../UI/Forms/Form";
-import Input from "../UI/Forms/Input";
+// import Input from "../UI/Forms/Input";
 import OptionalSignUp from "./OptionalSignUp";
+import Input from "../UI/Form/TextInput/Input";
+import Button from "../UI/Buttons/Standard/Button";
 
 interface Steps {
   nextStep?: any;
@@ -26,7 +28,7 @@ function EmailDetails({ nextStep, prevStep, handleChange, values }: Steps) {
     e.preventDefault();
 
     if (values?.email.length < 1)
-      return setError(<>Email required to continue</>);
+      return setError(<>A valid email is required to continue.</>);
     if (!regex.test(values?.email))
       return setError("Invalid email format. Please try again");
 
@@ -38,7 +40,7 @@ function EmailDetails({ nextStep, prevStep, handleChange, values }: Steps) {
         if (ifEmailExist.length > 0)
           return setError(
             <>
-              Email already registered.{" "}
+              A valid email is required to continue.{" "}
               <span
                 className="underline text-gray-40 w-fit"
                 onClick={() => navigate("/login")}
@@ -58,23 +60,28 @@ function EmailDetails({ nextStep, prevStep, handleChange, values }: Steps) {
   return (
     <>
       <Form>
-        <div className="h-3">
-          {error && (
-            <p className="text-rose-400 text-[0.6em] ">{<>{error}</>}</p>
-          )}
-        </div>
         <Input
           type={"email"}
           name="email"
-          placeholder={"Email"}
+          title={"Email"}
           defaultValue={values.email}
           required
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setError(null);
             handleChange("email")(e);
           }}
-          className={error ? "border-rose-400" : "border-gray-400/30"}
+          className={
+            error ? "border-rose-400 ring-rose-400" : "border-gray-400/30"
+          }
+          placeholderClassName={error ? "text-rose-400" : "text-gray-400/30"}
         />
+        <div className="h-3">
+          {error && (
+            <p className="text-rose-400/80 text-[0.6em] -mt-2 ml-1">
+              {<>{error}</>}
+            </p>
+          )}
+        </div>
         <div
           className={
             "flex flex-row-reverse items-center justify-center text-xs"
@@ -83,12 +90,14 @@ function EmailDetails({ nextStep, prevStep, handleChange, values }: Steps) {
           {/* <button className="w-full btn-primary" onClick={Continue}>
             Create an account
           </button> */}
-          <button
-            className="flex items-center gap-2 px-4 py-3 my-2 text-gray-200 rounded-md bg-black/90 focus:outline focus:outline-1 focus:outline-offset-2 hover:bg-black/70"
+          <Button
+            icon={<ArrowNarrowRightIcon className="w-5 h-5" />}
+            direction="right"
+            className={"text-xs py-4 w-full"}
             onClick={Continue}
           >
-            Create an account <ArrowNarrowRightIcon className="w-5 h-5" />
-          </button>
+            Create an account
+          </Button>
         </div>
       </Form>
       <OptionalSignUp />

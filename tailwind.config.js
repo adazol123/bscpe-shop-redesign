@@ -28,7 +28,7 @@ module.exports = {
         'sans': ['Raleway', 'sans-serif']
       },
       fontSize: {
-        sm: ["clamp(1.00rem, calc(0.92rem + 0.39vw),1.20rem)", "1.4"],
+        sm: ["clamp(0.97rem, calc(0.87rem + 0.37vw),1.20rem)", "1.2"],
         base: ["clamp(1.13rem, calc(0.98rem + 0.73vw),1.50rem)", "1.5"],
         lg: ["clamp(1.27rem, calc(1.03rem + 1.19vw),1.88rem)", "1.4"],
         xl: ["clamp(1.42rem, calc(1.06rem + 1.80vw),2.34rem)", "1.4"],
@@ -38,4 +38,5 @@ module.exports = {
   plugins: [
     require('@tailwindcss/line-clamp'),
   ],
+  important: true,
 }

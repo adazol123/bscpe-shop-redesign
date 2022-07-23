@@ -7,7 +7,7 @@ import ScrollToTop from "../../utils/hooks/useScrollToTop";
 import { UserAuth } from "../../utils/lib/Auth";
 import ShopState from "../../utils/lib/ShopState";
 import { ToggleState } from "../../utils/lib/ToggleState";
-import RadioButtonGroup from "../UI/Buttons/RadioButtonGroup";
+import RadioButtonGroup from "../UI/Buttons/RadioButtonGroup/RadioButtonGroup";
 
 let colors = [
   {

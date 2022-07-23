@@ -6,13 +6,14 @@ import { UserAuth } from "../../utils/lib/Auth";
 import config from "../../config.json";
 import { useNavigate } from "react-router-dom";
 import Form from "../UI/Forms/Form";
-import Input from "../UI/Forms/Input";
+import Input from "../UI/Form/TextInput/Input";
 import {
   ArrowNarrowLeftIcon,
   ArrowNarrowRightIcon,
 } from "@heroicons/react/outline";
 import AdvisorySecurity from "./AdvisorySecurity";
 import PasswordRequirementInfo from "./PasswordRequirementInfo";
+import Spinner from "../Core/Spinner";
 
 interface Steps {
   nextStep?: any;
@@ -31,10 +32,13 @@ function SecurityDetails({
   values,
   setStepper,
 }: Steps & Steppers) {
+  let navigate = useNavigate();
+
   let [error, setError] = useState({
     password: null,
     confirm_password: null,
   });
+  let [isLoading, setIsLoading] = useState(false);
   const { createUser }: any = UserAuth();
 
   //Password regex format
@@ -96,10 +100,18 @@ function SecurityDetails({
         (prev: any) =>
           (prev = { ...prev, confirm_password: "Password not match" })
       );
+    setIsLoading(true);
     setError((prev) => (prev = { password: null, confirm_password: null }));
-    return register()
-      .then((res) => console.log("registration success > ", res))
-      .catch((error) => console.log("registration error >", error));
+
+    setTimeout(() => {
+      navigate("/success", { replace: true });
+      return register()
+        .then((res) => {
+          console.log("registration success > ", res);
+          setIsLoading(true);
+        })
+        .catch((error) => console.log("registration error >", error));
+    }, 3000);
   };
 
   let Previous = (e: any) => {
@@ -144,8 +156,6 @@ function SecurityDetails({
           bank: "Development Bank of the Philippines",
         }
       );
-
-      navigate("/success");
     } catch (error: any) {
       console.log(error.code);
     }
@@ -163,8 +173,6 @@ function SecurityDetails({
     );
   };
 
-  let navigate = useNavigate();
-
   return (
     <>
       <Form>
@@ -175,64 +183,90 @@ function SecurityDetails({
           passNumber={!values?.password.match(number)}
           passNotMatch={values?.password !== values?.confirm_password}
         />
-        <div className="h-3 ">
-          <p className="text-rose-400 text-[0.68em] ">
-            {error?.password && error?.password}
-          </p>
-        </div>
+
         <Input
           type={"password"}
-          name="password"
           placeholder={"Password"}
           defaultValue={values.password}
           autoFocus
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           className={
             error?.password
-              ? "border-rose-400"
+              ? "border-rose-200 ring-rose-200"
               : passLength || passNotLower || passNotUpper || passNotNumber
-              ? "border-gray-400/30"
+              ? "border-neutral-400"
               : "border-emerald-600/30"
+          }
+          placeholderClassName={
+            error?.password
+              ? "text-rose-300"
+              : passLength || passNotLower || passNotUpper || passNotNumber
+              ? "text-neutral-400"
+              : "text-emerald-600/30"
           }
           onChange={(e: any) => {
             setError((prev) => (prev = { ...prev, password: null }));
             handleChange("password")(e);
           }}
         />
-        <div className="h-3 ">
+        <div className="h-4 -mt-[0.6rem] ml-1">
           <p className="text-rose-400 text-[0.68em] ">
-            {error?.confirm_password && error?.confirm_password}
+            {error?.password && error?.password}
           </p>
         </div>
+
         <Input
           type={"password"}
-          name="confirm-password"
           placeholder={"Confirm Password"}
           defaultValue={values.confirm_password}
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           className={
             error?.confirm_password
-              ? "border-rose-400"
+              ? "border-rose-200 ring-rose-200"
               : passLength ||
                 passNotLower ||
                 passNotUpper ||
                 passNotNumber ||
                 passNotMatch
-              ? "border-gray-400/30"
+              ? "border-neutral-400"
               : "border-emerald-600/30"
+          }
+          placeholderClassName={
+            error?.confirm_password
+              ? "text-rose-300"
+              : passLength ||
+                passNotLower ||
+                passNotUpper ||
+                passNotNumber ||
+                passNotMatch
+              ? "text-neutral-400"
+              : "text-emerald-600/30"
           }
           onChange={(e: any) => {
             setError((prev) => (prev = { ...prev, confirm_password: null }));
             handleChange!("confirm_password")(e);
           }}
         />
+        <div className="h-4 -mt-[0.6rem] ml-1">
+          <p className="text-rose-400 text-[0.68em] ">
+            {error?.confirm_password && error?.confirm_password}
+          </p>
+        </div>
 
         <div className="flex flex-row-reverse items-center justify-between my-2 text-xs">
           <button
-            className="flex items-center gap-2 px-4 py-2 my-2 text-gray-200 rounded-md bg-black/90 focus:outline focus:outline-1 focus:outline-offset-2 hover:bg-gray-500"
+            className="flex items-center justify-center gap-2 px-4 py-2 my-2 text-gray-200 rounded-md bg-black/90 focus:outline focus:outline-1 focus:outline-offset-2 hover:bg-gray-500  min-w-[155px]"
             onClick={Continue}
           >
-            Complete Setup <ArrowNarrowRightIcon className="w-5 h-5" />
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <>
+                {" "}
+                <span>Complete Setup</span>{" "}
+                <ArrowNarrowRightIcon className="w-5 h-5" />
+              </>
+            )}
           </button>
           <button
             className="flex items-center gap-2 px-4 py-2 my-2 border border-transparent rounded-md text-black/70 bg-gray-200/40 hover:bg-gray-100 hover:border-gray-400"

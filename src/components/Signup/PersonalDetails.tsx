@@ -4,8 +4,8 @@ import {
 } from "@heroicons/react/outline";
 import { ChangeEvent, useState } from "react";
 import Form from "../UI/Forms/Form";
-import Input from "../UI/Forms/Input";
 import Advisory from "./Advisory";
+import Input from "./../UI/Form/TextInput/Input";
 
 interface Steps {
   nextStep?: any;
@@ -58,41 +58,55 @@ function PersonalDetails({ nextStep, prevStep, handleChange, values }: Steps) {
   return (
     <>
       <Form>
-        <div className="h-3 ">
-          <p className="text-rose-400 text-[0.68em] ">
-            {error?.username && error?.username}
-          </p>
-        </div>
         <Input
           type={"text"}
-          name="username"
           placeholder={"Username"}
           defaultValue={values.username}
           autoFocus
-          className={error?.username ? "border-rose-300" : "border-gray-400/30"}
+          className={
+            error?.username
+              ? "border-rose-200 ring-rose-200"
+              : "border-neutral-400"
+          }
+          placeholderClassName={
+            error?.username ? "text-rose-400" : "text-neutral-400"
+          }
           // autoComplete="off"
           onChange={(e: any) => {
             setError((prev) => (prev = { ...prev, username: null }));
             handleChange("username")(e);
           }}
         />
-        <div className="h-3">
-          <p className="text-rose-400 text-[0.65em] ">
-            {error?.fullname && error?.fullname}
+        <div className="h-4 -mt-2 ml-1">
+          <p className="text-rose-400 text-[0.68em] ">
+            {error?.username && error?.username}
           </p>
         </div>
+
         <Input
           type={"text"}
           name="fullname"
           placeholder={"Fullname"}
           defaultValue={values.fullname}
-          className={error?.fullname ? "border-rose-400" : "border-gray-400/30"}
+          className={
+            error?.fullname
+              ? "border-rose-200 ring-rose-200"
+              : "border-neutral-400"
+          }
+          placeholderClassName={
+            error?.fullname ? "text-rose-400" : "text-neutral-400"
+          }
           // autoComplete="off"
           onChange={(e: any) => {
             setError((prev) => (prev = { ...prev, fullname: null }));
             handleChange("fullname")(e);
           }}
         />
+        <div className="h-4 -mt-2 ml-1">
+          <p className="text-rose-400 text-[0.65em] ">
+            {error?.fullname && error?.fullname}
+          </p>
+        </div>
         <div className="flex flex-row-reverse items-center justify-between my-2 text-xs">
           <button
             className="flex items-center gap-2 px-4 py-2 my-2 border border-transparent rounded-md text-black/70 bg-gray-200/40 hover:bg-gray-100 hover:border-black/40"

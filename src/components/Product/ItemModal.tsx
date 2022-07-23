@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ShopState from "../../utils/lib/ShopState";
 import ModalIos from '../UI/Modal/Ios/ModalIos'
-import RadioButtonGroup from "../UI/Buttons/RadioButtonGroup";
+import RadioButtonGroup from "../UI/Buttons/RadioButtonGroup/RadioButtonGroup";
 
 const ItemModal = ({ toggleItem, toggleItemHandler, product } : any) => {
 

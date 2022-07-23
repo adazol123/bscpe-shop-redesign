@@ -42,12 +42,13 @@ export interface ProductList {
   product_color: string[];
 }
 
+/**
+ * This is the state that can be called by toggleStateHandler param of modal_type
+ *  modal_type:
+*     | string | "modal" | "cart" | "notification" | "header_notify" | "modal_ios" | "modal_full | "modal_standard" | "side_bar" | "hamburger_mobile"
+ */
 export interface StaticState {
-  /**
-   * This is the state that can be called by toggleStateHandler param of modal_type
-   */
   toggleState: { [state: string]: boolean };
-
   toggleStateHandler: (
     modal_type:
       | string

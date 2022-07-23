@@ -10,6 +10,7 @@ import style from "./NavHeader.module.css";
 import { ToggleState } from "../../../utils/lib/ToggleState";
 import { States, StaticState } from "../../../types";
 import useMeasure from "react-use-measure";
+import { useNavigate } from "react-router-dom";
 
 interface Modal {
   toggleState: {
@@ -30,7 +31,7 @@ const NavHeader = () => {
   const [ref, { height, top, bottom }] = useMeasure({
     polyfill: ResizeObserver,
   });
-
+  let navigate = useNavigate();
   document.documentElement.style.setProperty(
     "--height-top",
     `${height.toString()}px`
@@ -60,22 +61,27 @@ const NavHeader = () => {
               <MenuIcon />
             </span>
           </button>
-          <FireIcon />
-          <span>BSCPE Store</span>
+          {/* <FireIcon /> */}
+          <span
+            className="text-xs"
+            onClick={() => navigate("/", { replace: true })}
+          >
+            BSCPE Store
+          </span>
         </div>
-        <div className={style.nav_header_list + " "}>
+        {/* <div className={style.nav_header_list + " "}>
           <button>Home</button>
           <button>About</button>
           <button>Home</button>
           <button>Home</button>
-        </div>
+        </div> */}
         <div className={style.nav_header_list_mobile + " "}>
-          <button
+          {/* <button
             className="btn_icon"
             onClick={() => toggleStateHandler!("notification")}
           >
             <BellIconOutline />
-          </button>
+          </button> */}
 
           <button
             className="btn_icon"

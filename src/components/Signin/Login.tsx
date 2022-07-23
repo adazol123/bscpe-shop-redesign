@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../UI/Forms/Input";
+// import Input from "../UI/Forms/Input";
 import { UserAuth } from "../../utils/lib/Auth";
+import Button from "../UI/Buttons/Standard/Button";
+import Input from "./../UI/TextInput/Input";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -52,22 +54,26 @@ const Login = () => {
       <div className="flex col-span-2 lg:col-span-1">
         <div className="flex flex-col justify-between items-center min-h-[calc(100vh-8em)] w-[calc(100vw-2em)] md:w-[calc(90%-2em)] lg:max-w-md mx-auto">
           <div className="flex flex-col w-full p-4 mx-auto rounded-lg">
-            <h1 className="mb-8 text-2xl font-thin text-center text-gray-400">
+            <h1 className="mb-8 text-sm font-thin text-center text-gray-400">
               Welcome back
             </h1>
-            <form onSubmit={login} className="flex flex-col gap-2">
+            <form onSubmit={login} className="flex flex-col w-full">
               <p className="text-xs text-rose-400">{error && error} </p>
               <Input
                 type="email"
-                name="email"
+                title="Email"
                 placeholder="Email"
-                setter={setEmail}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
               />
               <Input
                 type="password"
-                name="password"
+                title="Password"
                 placeholder="Password"
-                setter={setPassword}
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
               />
               <div className="flex items-center gap-1 text-[0.7em] text-gray-400/80 mb-8">
                 <input
@@ -77,21 +83,17 @@ const Login = () => {
                 />
                 <label htmlFor="password-cache">Remember me</label>
               </div>
-              <button
-                type="submit"
-                className="btn-primary"
-                aria-label="login buton"
-              >
-                Continue to login
-              </button>
+              <Button className={"text-xs py-5"}>Continue to login</Button>
             </form>
             <OptionalSignIn />
           </div>
           <p className="py-4 text-xs text-center text-gray-400/70">
             Don't have an account yet?{" "}
-            <Link className="text-gray-500 btn-link" to={"/register"}>
-              Sign up
-            </Link>
+            <Button type="link" className={"px-0 text-xs font-bold"}>
+              <Link className="text-gray-500 btn-link" to={"/register"}>
+                Sign up
+              </Link>
+            </Button>
           </p>
         </div>
       </div>
@@ -103,68 +105,39 @@ function OptionalSignIn() {
   return (
     <div className="w-full space-y-4">
       <p className="my-4 text-xs text-center text-gray-300">Or continue with</p>
-      <button
-        className="w-full btn-secondary-icon"
-        aria-label="signin with google"
-      >
-        <svg
-          width="18"
-          height="19"
-          viewBox="0 0 18 19"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clipPath="url(#clip0_65_1862)">
-            <path
-              d="M17.5781 9.70391C17.5781 14.6785 14.1715 18.2188 9.14062 18.2188C4.31719 18.2188 0.421875 14.3234 0.421875 9.5C0.421875 4.67656 4.31719 0.78125 9.14062 0.78125C11.4891 0.78125 13.4648 1.64258 14.9871 3.06289L12.6141 5.34453C9.50977 2.34922 3.73711 4.59922 3.73711 9.5C3.73711 12.541 6.16641 15.0055 9.14062 15.0055C12.593 15.0055 13.8867 12.5305 14.0906 11.2473H9.14062V8.24844H17.441C17.5219 8.69492 17.5781 9.12383 17.5781 9.70391Z"
-              fill="#757575"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_65_1862">
-              <rect
-                width="18"
-                height="18"
-                fill="white"
-                transform="translate(0 0.5)"
+      <Button
+        icon={
+          <svg
+            width="18"
+            height="19"
+            viewBox="0 0 18 19"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clipPath="url(#clip0_65_1862)">
+              <path
+                d="M17.5781 9.70391C17.5781 14.6785 14.1715 18.2188 9.14062 18.2188C4.31719 18.2188 0.421875 14.3234 0.421875 9.5C0.421875 4.67656 4.31719 0.78125 9.14062 0.78125C11.4891 0.78125 13.4648 1.64258 14.9871 3.06289L12.6141 5.34453C9.50977 2.34922 3.73711 4.59922 3.73711 9.5C3.73711 12.541 6.16641 15.0055 9.14062 15.0055C12.593 15.0055 13.8867 12.5305 14.0906 11.2473H9.14062V8.24844H17.441C17.5219 8.69492 17.5781 9.12383 17.5781 9.70391Z"
+                fill="#757575"
               />
-            </clipPath>
-          </defs>
-        </svg>
-
-        <span className="">Sign in with Google</span>
-      </button>
-      <div className="g-signin2" data-onsuccess="onSignIn">
-        {" "}
-      </div>
-      {/* <button
-        className="w-full btn-secondary-icon"
-        aria-label="signin with phone"
+            </g>
+            <defs>
+              <clipPath id="clip0_65_1862">
+                <rect
+                  width="18"
+                  height="18"
+                  fill="white"
+                  transform="translate(0 0.5)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        }
+        className="w-full py-4 text-xs"
+        disabled
+        type="outline"
       >
-        <svg
-          width="19"
-          height="19"
-          viewBox="0 0 19 19"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M13.25 2H5.75C4.92157 2 4.25 2.67157 4.25 3.5V15.5C4.25 16.3284 4.92157 17 5.75 17H13.25C14.0784 17 14.75 16.3284 14.75 15.5V3.5C14.75 2.67157 14.0784 2 13.25 2Z"
-            stroke="#757575"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M9.5 14H9.5075"
-            stroke="#757575"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        Sign up with Phone
-      </button> */}
+        Sign in with Google
+      </Button>
     </div>
   );
 }

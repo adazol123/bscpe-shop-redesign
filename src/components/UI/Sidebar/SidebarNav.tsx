@@ -4,6 +4,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   InformationCircleIcon,
+  TagIcon,
   XIcon,
 } from "@heroicons/react/outline";
 import {
@@ -23,12 +24,15 @@ import style from "./SidebarNav.module.css";
 import { Modal, StaticState } from "../../../types";
 import CustomNavLink from "../../../utils/others/CustomNavLink";
 import { UserAuth } from "../../../utils/lib/Auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToggleState } from "../../../utils/lib/ToggleState";
-import Dropdown from "../Buttons/Dropdown";
+import Dropdown from "../Buttons/Dropdown/Dropdown";
+import Button from "./../Buttons/Standard/Button";
+import ButtonCustom from "../Buttons/Custom/ButtonCustom";
+import NavLink from "../../../utils/others/NavLink";
 export const SidebarNav = ({ state, toggleStateHandler }: Modal) => {
   let { currentUser, logout }: any = UserAuth();
-
+  console.log(currentUser);
   let navigate = useNavigate();
   let { toggleStateHandler: rootStateHandler } = ToggleState() as StaticState;
   return (
@@ -100,7 +104,7 @@ export const SidebarNav = ({ state, toggleStateHandler }: Modal) => {
 
           </div>
         </button> */}
-          <CustomNavLink to="" onClick={toggleStateHandler}>
+          {/* <CustomNavLink to="" onClick={toggleStateHandler}>
             <SideNavButton Icon={HomeIconLine} name={"Home"} />
           </CustomNavLink>
 
@@ -111,48 +115,107 @@ export const SidebarNav = ({ state, toggleStateHandler }: Modal) => {
             }}
           >
             <SideNavButton Icon={ShoppingBagIcon} name={"Shopping cart"} />
-          </button>
+          </button> */}
 
-          <Dropdown />
+          <NavLink to="" onClick={toggleStateHandler}>
+            <ButtonCustom icon={<HomeIcon />} className="w-full text-sm">
+              Home
+            </ButtonCustom>
+          </NavLink>
+          <NavLink
+            to=""
+            onClick={() => {
+              toggleStateHandler();
+              rootStateHandler("cart");
+            }}
+          >
+            <ButtonCustom
+              icon={<ShoppingBagIconLine />}
+              className="w-full text-sm"
+            >
+              Shopping cart
+            </ButtonCustom>
+          </NavLink>
+          <Dropdown title="Categories">
+            <NavLink to={"/0"} onClick={toggleStateHandler}>
+              <span>
+                <TagIcon />
+              </span>
+              <span>Men</span>
+            </NavLink>
+            <NavLink to={"/1"} onClick={toggleStateHandler}>
+              <span>
+                <TagIcon />
+              </span>
+              <span>Women</span>
+            </NavLink>
+            <NavLink to={"/2"} onClick={toggleStateHandler}>
+              <span>
+                <TagIcon />
+              </span>
+              <span>Kids</span>
+            </NavLink>
+          </Dropdown>
+          <NavLink to="/about" onClick={toggleStateHandler}>
+            <ButtonCustom
+              icon={<InformationCircleIcon />}
+              className="w-full text-sm"
+            >
+              About
+            </ButtonCustom>
+          </NavLink>
 
-          <CustomNavLink to="about" onClick={toggleStateHandler}>
+          {/* <CustomNavLink to="about" onClick={toggleStateHandler}>
             <SideNavButton Icon={InformationCircleIcon} name={"About"} />
-          </CustomNavLink>
+          </CustomNavLink> */}
         </nav>
         <footer className={style.footer}>
           {currentUser ? (
-            <CustomNavLink to="account" onClick={toggleStateHandler}>
-              <SideNavButton Icon={UserIcon} name={"Account"} />
-            </CustomNavLink>
+            <NavLink to="/account" onClick={toggleStateHandler}>
+              <Button type="outline" className="w-full py-3 justify-between">
+                <div className="inline-flex gap-3 items-center">
+                  <span>
+                    <UserIcon />
+                  </span>
+                  <div className="text-start">
+                    <p className="text-xs font-bold">
+                      {currentUser?.displayName}
+                    </p>
+                    <p className="text-[0.6em] text-black/40">
+                      {currentUser?.email}
+                    </p>
+                  </div>
+                </div>
+                <ArrowRightIcon />
+              </Button>
+            </NavLink>
           ) : (
-            <button
+            <Button
               onClick={() => {
                 toggleStateHandler();
                 navigate("/login");
               }}
-              className={style.login}
+              className="text-xs py-4"
             >
               <span />
               <span>Login/Signup</span>
               <span>
                 <ArrowRightIcon />
               </span>
-            </button>
+            </Button>
           )}
 
           {currentUser && (
-            <button
-              className="flex items-center justify-between gap-4 p-4 text-xs rounded-md shadow-inner bg-gray-50"
+            <ButtonCustom
+              icon={<LogoutIcon className="w-4 text-gray-400 -h-4" />}
+              className="text-xs py-4"
               onClick={() => {
                 logout();
                 toggleStateHandler();
               }}
             >
-              <div className="flex items-center gap-4">
-                <LogoutIcon className="w-4 text-gray-400 -h-4" />{" "}
-                <p className="text-gray-600">Logout</p>
-              </div>
-            </button>
+              <p className="text-neutral-600">Logout</p>
+            </ButtonCustom>
           )}
         </footer>
       </div>

@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { ProductCart, ProductList, StaticState } from "../../../types";
 import ShopState from "../../../utils/lib/ShopState";
 import { ToggleState } from "../../../utils/lib/ToggleState";
-import RadioButtonGroup from "../Buttons/RadioButtonGroup";
 import style from "./Card.module.css";
 import { colors, size } from "./radiobuttondata";
 import ModalMobile from "../Modal/Mobile/ModalMobile";
