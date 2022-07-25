@@ -130,7 +130,7 @@ function WithoutProps() {
     <>
       <main className="lg:col-span-2 lg:order-2 lg:row-span-1" id="list">
         {/* //this props need to move to global context props (UPDATED 03/07/2022 [refactor]) */}
-        <ListGridToggler />
+        {/* <ListGridToggler /> */}
         {/* //this props need to move to global context props (UPDATED 03/07/2022 [refactor]) */}
 
         {toggleList ? (

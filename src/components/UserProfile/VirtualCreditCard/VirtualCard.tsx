@@ -20,17 +20,17 @@ function VirtualCard({
       <p className="absolute top-8 left-5  text-[0.5em] text-neutral-500 font-thin">
         Virtual Card
       </p>
-      <p className="absolute text-[0.65em] top-8 right-5 max-w-[16ch] text-right font-light">
+      <p className="absolute text-[0.65em] top-8 right-5  text-right font-light whitespace-nowrap">
         {bank}
       </p>
-      <p className="absolute text-sm font-light bottom-14 left-5 max-w-[20ch] text-right text-neutral-400">
+      <p className="absolute text-base font-light bottom-12 left-5 max-w-[20ch] text-right text-neutral-400">
         {card_number}
       </p>
-      <p className="absolute text-[0.6em] font-light bottom-10 left-5 max-w-[20ch] text-right text-neutral-500">
+      <p className="absolute text-[0.6em] font-light bottom-8 left-5 max-w-[20ch] text-right text-neutral-500">
         {card_holder}
       </p>
       <p className="absolute text-lg italic font-thin text-right text-neutral-300 right-5 bottom-8">
-        {type}
+        {type || "VISA"}
       </p>
     </div>
   );
