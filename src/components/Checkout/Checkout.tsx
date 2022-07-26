@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../../utils/hooks/useScrollToTop";
 import AccountState from "../../utils/lib/AccountState";
 import ShopState from "../../utils/lib/ShopState";
-import Accordion from "../UI/Standard/Accordion";
+import Accordion from "../UI/Accordion/Accordion";
 import VirtualCard from "../UserProfile/VirtualCreditCard/VirtualCard";
 import Button from "./../UI/Buttons/Standard/Button";
 

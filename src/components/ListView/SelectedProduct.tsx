@@ -6,6 +6,7 @@ import {
 import { ShoppingCartIcon as ShoppingCartIconFill } from "@heroicons/react/solid";
 import { useState, useEffect } from "react";
 import { ProductList, StaticState } from "../../types";
+import useQuantity from "../../utils/hooks/useQuantity";
 import ShopState from "../../utils/lib/ShopState";
 import { ToggleState } from "../../utils/lib/ToggleState";
 import RadioButtonGroup from "../UI/Buttons/RadioButtonGroup/RadioButtonGroup";
@@ -16,21 +17,11 @@ import style from "./ListView.module.css";
 const SelectedProduct = ({ product }: { product: ProductList }) => {
   let { toggleState, toggleStateHandler } = ToggleState() as StaticState;
 
-  let [quantity, setQuantity] = useState(1);
-
-  let addQuantity = () => {
-    setQuantity((count) => count + 1);
-  };
-  let minusQuantity = () => {
-    setQuantity((count) => count - 1);
-    if (quantity < 2) {
-      setQuantity(1);
-    }
-  };
+  let { quantity, setQuantity, addQuantity, minusQuantity } = useQuantity();
 
   let [selectedColorOption, setSelectedColorOption] = useState<
     string | undefined
-  >();
+  >(colors[0].option);
   let [selectedSizeOption, setSelectedSizeOption] = useState<
     string | undefined
   >();
@@ -38,15 +29,12 @@ const SelectedProduct = ({ product }: { product: ProductList }) => {
   let { products, addToCart, removeFromCart }: any = ShopState();
 
   let [isInCart, setIsInCart] = useState(false);
-  console.log(
-    selectedColorOption === undefined && selectedSizeOption === undefined
-  );
 
   useEffect(() => {
     let productIsInCart = products.find(
       (item: any) => item.name === product?.product_name
     );
-    console.log(productIsInCart);
+    setSelectedColorOption(colors[0].option);
 
     if (productIsInCart) {
       setIsInCart(true);
@@ -91,21 +79,9 @@ const SelectedProduct = ({ product }: { product: ProductList }) => {
             <div className="overflow-hidden rounded-md w-36 h-36">
               <img src={product.product_image} alt={product.product_name} />
             </div>
-            {/* <div className="flex h-12 gap-2 my-2 overflow-hidden">
-              <img
-                src={product.product_image}
-                className="object-cover w-12 h-full rounded"
-              />
-
-              <img
-                src={product.product_image}
-                className="object-cover w-12 h-full rounded"
-              />
-            </div> */}
           </div>
           <div className={style.modal_mobile_detail}>
             <p>{product.product_name}</p>
-
             <span className={style.modal_mobile_subtitle}>Color</span>
             <ul className="flex gap-4 mt-3">
               <RadioButtonGroup
@@ -152,38 +128,46 @@ const SelectedProduct = ({ product }: { product: ProductList }) => {
           </div>
         </div>
       </div>
-      <div className={style.modal_mobile_footer}>
-        <button
-          onClick={() => {
-            handleClick();
-            toggleStateHandler("modal_mobile");
-          }}
-          className={`${style.modal_mobile_cart} disabled:bg-black/30 disabled:text-white/30 disabled:cursor-not-allowed`}
-          disabled={
-            selectedColorOption === undefined &&
-            selectedSizeOption === undefined
-          }
-        >
-          {" "}
-          {isInCart ? (
-            <>
-              <span>
-                <ShoppingCartIconFill />
-              </span>
-              <span>Remove from cart</span>
-            </>
-          ) : (
-            <>
-              <span>
-                <ShoppingCartIcon />
-              </span>
-              <span>Add to cart</span>
-            </>
-          )}
-        </button>
-      </div>
+      <FooterSection
+        handleClick={handleClick}
+        toggleStateHandle={toggleStateHandler}
+        selectedSizeOption={selectedSizeOption}
+        isInCart={isInCart}
+      />
     </div>
   );
 };
+
+function FooterSection(props: any) {
+  return (
+    <div className={style.modal_mobile_footer}>
+      <button
+        onClick={() => {
+          props.handleClick();
+          props.toggleStateHandler("modal_mobile");
+        }}
+        className={`${style.modal_mobile_cart} disabled:bg-black/30 disabled:text-white/30 disabled:cursor-not-allowed`}
+        disabled={props.selectedSizeOption === undefined}
+      >
+        {" "}
+        {props.isInCart ? (
+          <>
+            <span>
+              <ShoppingCartIconFill />
+            </span>
+            <span>Remove from cart</span>
+          </>
+        ) : (
+          <>
+            <span>
+              <ShoppingCartIcon />
+            </span>
+            <span>Add to cart</span>
+          </>
+        )}
+      </button>
+    </div>
+  );
+}
 
 export default SelectedProduct;
